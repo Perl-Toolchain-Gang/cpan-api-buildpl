@@ -82,12 +82,19 @@ A list of actions that *must* be supported follows:
 
 (blah blah configuration blah blah)
 
-Precedence of configuration:
+During execution of Build.PL or Build, options should have the following
+precedence (from high to low):
 
 * {@ARGV}
 * {$ENV{PERL_MB_OPT}}
-* cached configuration from Build.PL
-* configuration file
+* configuration file -- action-specific options
+* cached configuration from Build.PL (only when running Build)
+* configuration file -- wildcard (*)
+*
+
+Conceptually, options should be split on white space and then spliced
+together, with higher-precedence options following lower-precedence
+options.  Options should then be processed "in order".
 
 == Command Line Options
 
