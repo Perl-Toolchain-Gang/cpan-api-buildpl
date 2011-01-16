@@ -251,7 +251,7 @@ This is the same as C<bindoc> above, but applies to HTML documents.
 
 =back
 
-Four other parameters let you control various aspects of how
+Five other parameters let you control various aspects of how
 installation paths are determined:
 
 =over 4
@@ -340,6 +340,15 @@ This will effectively install to "/tmp/foo/$sitelib",
 "/tmp/foo/$sitearch", and the like, except that it will use
 C<File::Spec> to make the pathnames work correctly on whatever
 platform you're installing on.
+
+=item prefix
+
+An implementation *may* implement this option for compatibility with ExtUtils::MakeMaker's PREFIX argument. If implemented it *must* behave the same as ExtUtils::MakeMaker 6.30 would given the PREFIX argument. In other words, the following examples must be equivalent.
+
+ perl Build.PL --prefix /tmp/foo
+ perl Makefile.PL PREFIX=/tmp/foo
+
+If an implementation opts not implement prefix, it *must* give a descriptive error at the earliest possible time if a user tries to use it.
 
 =back
 
