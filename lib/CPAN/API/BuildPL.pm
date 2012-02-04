@@ -172,7 +172,7 @@ options that *must* be applied when 'Build.PL' is run.
 
 For example:
 
-  *           verbose=1   # global options
+  *           --verbose   # global options
   install     --install_base /home/ken
               --install_path html=/home/ken/docs/html
 
