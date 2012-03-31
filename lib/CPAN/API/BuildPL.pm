@@ -43,6 +43,9 @@ documentation of [Module::Build] (copyright Ken Williams).
 
   perl Build.PL [options]
 
+* if run with a '--build-pl-api-version' option, *must* print on a single line to STDOUT
+the Build.PL API version supported and *must* exit with 0; it *must not* do
+any other processing described below; it *may* say what 
 * *must* generate a Build file if configuration is successful
 * *must* exit with exit code of zero if configuration is successful
 * *must* not generate a Build file if configuration fails
@@ -60,23 +63,45 @@ CPAN::Meta::Spec
   ./Build [command] [options]
 
 * *must* carry out a 'build' action if no command is specified
+* *must* use the same perl executable that was used to run Build.PL
+* *should not* preserve @INC from Build.PL
 
 A list of actions that *must* be supported follows:
 
 === 'build' action
 
-* (Need to define the expected structure under blib)
+* *must* prepare the distribution for the test and install actions
+* *must* exit with 0 if the distribution is considered ready for
+testing/installation
+* *must* exit with a non-zero code if the distribution is not ready 
+for testing/installation
+
+Historically, this means compiling, copying files to blib, etc.
+and many existing tools may expect to find things in blib.  This is
+not necessarily the right way to do thing forever and ever.
 
 === 'test' action
 
-* *should* produce a TAP stream
-* (Need to define what to do about 'test.pl' and 'visual.pl')
-* (Need to define what to do with exit condition)
+(Add purpose statement?)
+
+* *must* exit with 0 if the distribution is considered install-ready
+* *must* exit with a non-zero code if the distribution is not ready to
+install
+* *should* produce a human-readable result to STDOUT
+* *may* run the 'build' action
+* *may* consider having no tests to be a successful result
 
 === 'install' action
 
-* (Need to define how blib structure maps to install paths)
-* (Need to figure out what to do about packlists)
+* *must* exit with 0 if the distribution was installed successfully
+* *must* exit with a non-zero code if the distribution was not installed
+successfully
+* *must* install to the paths defined in other sections of this document
+* *should* not modify paths not defined in other sections of this
+document
+* *should* preserve the prior state of the system if installation is
+unsuccessful 
+* *must not* require the test action to have been run
 
 = CONFIGURATION
 
