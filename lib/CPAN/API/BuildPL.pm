@@ -112,10 +112,7 @@ precedence (from high to low):
 
 * {@ARGV}
 * {$ENV{PERL_MB_OPT}}
-* configuration file -- action-specific options
 * cached configuration from Build.PL (only when running Build)
-* configuration file -- wildcard (*)
-*
 
 Conceptually, options should be split on white space and then spliced
 together, with higher-precedence options following lower-precedence
@@ -135,60 +132,13 @@ Initial thoughts:
 * --verbose (?) (but connects to EU::Install)
 * --quiet (?)
 
-== Configuration file
-
-When Build.PL or Build runs, it *must* look for a configuration file
-in the following locations and *must* take the first file that it finds,
-if more than one exists:
-
-  $ENV{MODULEBUILDRC}
-  $ENV{HOME} . "/.modulebuildrc"
-  $ENV{USERPROFILE} . "/.modulebuldrc"
-
-If a configuration file exists, the options specified there *must* used
-as defaults as if they were typed on the command line, but the actual
-command line *must* override defaults from a configuration file.  The
-format of the configuration file is described below.
-
-As with Perl, a hash mark ({#}) begins a comment that continues to the
-end of the line it appears on.  Comments *must* be ignored.  Empty lines
-or lines with only white space *must* also be ignored.
-
-The first word on a configuration line describe the 'action' to which
-the options apply.  The 'action' is the command given to the 'Build'
-program.  An action *must* be followed by whitespace and then the
-options.  Options *must* be formed just as they would be on the command
-line (e.g.  separated by whitespace).  They can be separated by any
-amount of whitespace, including newlines, as long there is whitespace at
-the beginning of each continued line.  If more than one line begins with
-the same action name, those lines are merged into one set of options in
-the order they appear.
-
-There are three special pseudo-actions: an {*} (asterisk) denotes global
-options that *must* be applied whenever 'Build.PL' or 'Build' is run,
-the pseudo-action 'build' *must* be applied when 'Build' is run without
-a command like 'test' or 'install', and the key 'Build_PL' specifies
-options that *must* be applied when 'Build.PL' is run.
-
-For example:
-
-  *           --verbose   # global options
-  install     --install_base /home/ken
-              --install_path html=/home/ken/docs/html
-
-Unrecognized actions *should* be ignored and *must not* be treated as
-errors.
-
 == Environment variables
 
-* MODULEBUILDRC -- specifies the preferred location of a configuration
-file
 * PERL_MB_OPT -- provides option as if they were specified on the command
 line to Build.PL or any Build action, but with precedence lower than
 actual command line options .  The string *must* be split on whitespace
 as the shell would and the result prepended to any actual command-line
 arguments in {@ARGV}
-
 
 =end wikidoc
 
