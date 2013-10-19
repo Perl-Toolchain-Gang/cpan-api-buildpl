@@ -295,12 +295,17 @@ platform you're installing on.
 
 =item prefix
 
-An implementation *may* implement this option for compatibility with ExtUtils::MakeMaker's PREFIX argument. If implemented it *must* behave the same as ExtUtils::MakeMaker 6.30 would given the PREFIX argument. In other words, the following examples must be equivalent.
+An implementation *may* implement this option for compatibility with
+ExtUtils::MakeMaker's PREFIX argument. If implemented it *must* behave
+the same as ExtUtils::MakeMaker 6.30 would given the PREFIX argument. In
+other words, the following examples must be equivalent.
 
  perl Build.PL --prefix /tmp/foo
  perl Makefile.PL PREFIX=/tmp/foo
 
-If an implementation opts not implement prefix, it *must* give a descriptive error at the earliest possible time if a user tries to use it.
+If an implementation opts not implement prefix, it *must* give a
+descriptive error at the earliest possible time if a user tries to use
+it.
 
 =back
 
