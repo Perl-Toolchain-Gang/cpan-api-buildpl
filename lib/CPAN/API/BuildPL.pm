@@ -4,6 +4,8 @@ use warnings;
 package CPAN::API::BuildPL;
 # ABSTRACT: Documentation of the API for using Build.PL
 
+# VERSION
+
 1;
 
 __END__
