@@ -8,8 +8,6 @@ package CPAN::API::BuildPL;
 
 1;
 
-__END__
-
 =begin wikidoc
 
 = DESCRIPTION
