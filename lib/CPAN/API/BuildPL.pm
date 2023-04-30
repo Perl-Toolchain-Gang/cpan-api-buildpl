@@ -124,7 +124,7 @@ options.  Options should then be processed "in order".
 
 Initial thoughts:
 
-* --dest_dir
+* --destdir
 * --installdirs
 * --install_base
 * --install_path
