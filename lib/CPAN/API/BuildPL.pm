@@ -315,7 +315,7 @@ it.
 * [CPANPLUS]
 * [cpanm]
 * [Module::Build]
-* [Acme::Module::Build::Tiny]
+* [Module::Build::Tiny]
 
 =end wikidoc
 
