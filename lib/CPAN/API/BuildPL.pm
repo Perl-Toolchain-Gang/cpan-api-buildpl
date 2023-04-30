@@ -43,9 +43,6 @@ documentation of [Module::Build] (copyright Ken Williams).
 
   perl Build.PL [options]
 
-* if run with a '--build-pl-api-version' option, *must* print on a single line to STDOUT
-the Build.PL API version supported and *must* exit with 0; it *must not* do
-any other processing described below; it *may* say what 
 * *must* generate a Build file if configuration is successful
 * *must* exit with exit code of zero if configuration is successful
 * *must* not generate a Build file if configuration fails
