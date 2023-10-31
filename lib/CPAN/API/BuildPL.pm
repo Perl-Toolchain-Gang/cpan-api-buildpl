@@ -73,7 +73,7 @@ A list of actions that *must* be supported follows:
 * *must* prepare the distribution for the test and install actions
 * *must* exit with 0 if the distribution is considered ready for
 testing/installation
-* *must* exit with a non-zero code if the distribution is not ready 
+* *must* exit with a non-zero code if the distribution is not ready
 for testing/installation
 
 Historically, this means compiling, copying files to blib, etc.
@@ -100,7 +100,7 @@ successfully
 * *should* not modify paths not defined in other sections of this
 document
 * *should* preserve the prior state of the system if installation is
-unsuccessful 
+unsuccessful
 * *must not* require the test action to have been run
 
 === 'clean' action
@@ -135,17 +135,23 @@ options.  Options should then be processed "in order".
 
 == Command Line Options
 
-(write about them here, if only to refer to INSTALL_PATHS)
+All command line arguments are accepted on action, even if they
+only affect one action.
 
-Initial thoughts:
-
-* --dest_dir
-* --installdirs
-* --install_base
-* --install_path
+* --destdir <dir>
+  This sets the destdir as described in L</INSTALL PATHS>
+* --installdirs <type>
+  <type> must be one of C<site>, C<vendor> or C<core> as described in L</INSTALL PATHS>
+* --install_base <dir>
+  This sets the install_base as described in L</INSTALL PATHS>
+* --install_path <type>=<dir>
+  This sets the install_path for a type as described in L</INSTALL PATHS>
 * --uninst
-* --verbose (?) (but connects to EU::Install)
-* --quiet (?)
+  If enabled this will cause old versions of the module to be
+  uninstalled when the new version is installed.
+* --verbose
+  This instructs the build tool it should output additional information
+  on what it's doing
 
 == Environment variables
 
