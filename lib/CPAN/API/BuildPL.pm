@@ -135,6 +135,8 @@ options.  Options should then be processed "in order".
 All command line arguments are accepted on action, even if they
 only affect one action.
 
+* --config <key>=<value>
+  This override the value of a config (as in C<Config.pm>) entry
 * --destdir <dir>
   This sets the destdir as described in L</INSTALL PATHS>
 * --installdirs <type>
