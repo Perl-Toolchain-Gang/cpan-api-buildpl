@@ -137,6 +137,10 @@ only affect one action.
 
 * --config <key>=<value>
   This override the value of a config (as in C<Config.pm>) entry
+* --extra_compiler_flags <value>
+  This sets extra flags to be passed on to any compilation command.
+* --extra_linker_flags <value>
+  This sets extra flags to be passed on to any linking command.
 * --destdir <dir>
   This sets the destdir as described in L</INSTALL PATHS>
 * --installdirs <type>
