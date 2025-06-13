@@ -161,7 +161,7 @@ only affect one action.
 * PERL_MB_OPT -- provides option as if they were specified on the command
 line to Build.PL or any Build action, but with precedence lower than
 actual command line options .  The string *must* be split on whitespace
-as the shell would and the result prepended to any actual command-line
+as a Unix shell would and the result prepended to any actual command-line
 arguments in {@ARGV}
 
 =end wikidoc
